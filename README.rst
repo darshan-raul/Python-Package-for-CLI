@@ -16,7 +16,7 @@ Python AWS cli
 
 
 
-This is a simple package to interact with th AWS with AWS services
+This is a simple package to interact with  AWS services
 
 
 * Free software: MIT license
@@ -27,6 +27,10 @@ Features
 --------
 
 * TODO
+
+- Integrate the __main__ style code to setuptools format
+- Create package
+- Publish to Pypi
 
 Credits
 -------
