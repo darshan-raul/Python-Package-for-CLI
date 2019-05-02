@@ -44,3 +44,4 @@ This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypack
 https://uoftcoders.github.io/studyGroup/lessons/python/packages/lesson/
 https://python-packaging.readthedocs.io/en/latest/minimal.html
 https://dzone.com/articles/executable-package-pip-install
+https://pypi.org/project/create-python-package/
