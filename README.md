@@ -4,7 +4,7 @@ This package can be used to get a CLI interface for interacting with AWS service
 
 ## Instructions to install
 
-> pip install <package-name>
+> pip install aws_python_cli
 
 ## References
 
