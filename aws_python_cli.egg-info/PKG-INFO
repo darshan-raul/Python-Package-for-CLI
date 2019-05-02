@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: aws-python-cli
+Version: 0.1
+Summary: A CLI package in python to interact with AWS services
+Home-page: https://github.com/darshan-raul/Python-Package-for-CLI
+Author: Darshan Raul
+Author-email: cloudforteskills@gmail.com
+License: MIT
+Description: # Python CLI for AWS
+        
+        This package can be used to get a CLI interface for interacting with AWS services.
+        
+        ## Instructions to install
+        
+        > pip install <package-name>
+        
+        ## References
+        
+        https://dzone.com/articles/executable-package-pip-install
+        https://python-packaging.readthedocs.io/en/latest/minimal.html
+Platform: UNKNOWN
+Description-Content-Type: text/markdown

@@ -1,0 +1,8 @@
+README.md
+setup.py
+aws_python_cli/__init__.py
+aws_python_cli.egg-info/PKG-INFO
+aws_python_cli.egg-info/SOURCES.txt
+aws_python_cli.egg-info/dependency_links.txt
+aws_python_cli.egg-info/not-zip-safe
+aws_python_cli.egg-info/top_level.txt
