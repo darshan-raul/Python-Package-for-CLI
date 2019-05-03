@@ -16,7 +16,7 @@ This package can be used to get a CLI interface for interacting with AWS service
 ```
 sudo python -m pip install --upgrade pip setuptools wheel
 sudo python -m pip install tqdm
-sudo python -m pip install --user --upgrade twine
+sudo python -m pip install  --upgrade twine
 ```
 
 - Create wheel file
