@@ -6,7 +6,7 @@ requires = [
     'boto3>=1.9.0,<2.0.0',
     'pyfiglet>=0.7,<0.8',
     'PyInquirer>=1.0.3',
-    'progress>=1.5'
+    'progress>=1.5',
     'termcolor>=1.1.0'
 
     
@@ -18,7 +18,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
      name='pyawscli',  
-     version='0.0.6',
+     version='0.1.2',
      author="Darshan Raul",
      author_email="cloudforteskills@gmail.com",
      description="A CLI package in python to interact with AWS services",
