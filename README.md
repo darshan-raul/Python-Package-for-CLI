@@ -52,3 +52,11 @@ python -m twine upload dist/*
 ```
 
 > python setup.py register is depricated now no need to use it
+
+
+
+# TODO/BUGFIXES:
+
+
+- [ ] pip install on linux (version number error)
+- [ ] avoid using python - m everytime to run the package (env/path variable)
