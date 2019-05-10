@@ -18,7 +18,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
      name='pyawscli',  
-     version='0.1.2',
+     version='0.1.5',
      author="Darshan Raul",
      author_email="cloudforteskills@gmail.com",
      description="A CLI package in python to interact with AWS services",
