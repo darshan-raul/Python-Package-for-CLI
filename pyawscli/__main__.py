@@ -198,6 +198,18 @@ securitygroup_choice=[{
 }
         ]
 
+
+
+
+
+
+
+
+
+
+
+
+
 def getservice():
 
     mainquestions = [
@@ -243,7 +255,7 @@ def gotoservice(service):
         {
         'type': 'list',
         'name': 'action',
-        'message': 'Which AWS service you want to use ?',
+        'message': 'Which action do you want to make ?',
         'choices': ['Create Bucket','Delete Bucket','List Bucket Objects','Upload file to Bucket','Go Back'
             
         ]
@@ -265,7 +277,7 @@ def gotoservice(service):
         {
         'type': 'list',
         'name': 'action',
-        'message': 'Which AWS service you want to use ?',
+        'message': 'Which action do you want to make ?',
         'choices': ['Run Instances','Start Instances','Stop Instances','Terminate Instances',
         Separator('---------Keypairs---------'),'List Keypairs','Create Keypair','Delete Keypair',
         Separator('---------Security Groups---------'),'List Security Groups','Create Security Groups','Delete Security Groups','Go Back'
@@ -290,7 +302,7 @@ def gotoservice(service):
         {
         'type': 'list',
         'name': 'action',
-        'message': 'Which AWS service you want to use ?',
+        'message': 'Which action do you want to make ?',
         'choices': ['Create User','Create Group','Add User to Group','Delete User','Delete Group',
         Separator('---------Keys---------'),'List Access Keys','Create Access Key','Delete Access Key',
         Separator('---------Roles---------'),'List Roles','Create Roles','Delete Roles',
@@ -313,7 +325,7 @@ def gotoservice(service):
         {
         'type': 'list',
         'name': 'action',
-        'message': 'Which AWS service you want to use ?',
+        'message': 'Which action do you want to make ?',
         'choices': ['Create VPC','Delete VPC','Go Back'
         ]
         }
@@ -330,7 +342,7 @@ def gotoservice(service):
 
 
 def s3actions(action):
-
+# TODO : resolve Location constraint error (ap-south working)
     if action == 'Create Bucket':
 
         bucket_name=input("What is the name of the bucket you want to create ( Use comma if you want to create multiple buckets): ")###Need to add this functionality later (from mobile app script)
@@ -359,10 +371,77 @@ def s3actions(action):
                 
             s3class.deletebucket(bucket_choices)
 
-        confirm_or_exit('S3')        
-        
-    
+        confirm_or_exit('S3')    
 
+    if action == 'List Bucket Objects':
+            
+        bucket_choices = prompt(bucket_choice, style=custom_style_2)
+        pprint(bucket_choices)
+        
+                
+        s3class.listobjects(bucket_choices)
+
+             
+        s3objectquestions = [
+        {
+        'type': 'list',
+        'name': 'objectaction',
+        'message': 'Which action do you want to make ?',
+        'choices': ['Upload object to bucket','Delete Object from Bucket','Download object from Bucket','Go Back'
+        ]
+        }
+    
+        ]  
+        def delete_object(bucket_choices):  # inner function Hidden from outer code
+            print(bucket_choices['bucket'][0])
+            object_list=s3class.listobjects(bucket_choices)
+            object_choice=[{
+            'type': 'checkbox',
+            'qmark': '😃',
+            'message': 'Select objects',
+            'name': 'object',
+            #'choices': ['test1','test2'],
+            'choices': object_list
+            }
+            ]
+            object_choices = prompt(object_choice, style=custom_style_2)
+            pprint(object_choices)
+            s3class.deleteobject(bucket_choices,object_choices)
+            confirm_or_exit('S3') 
+        def download_object(bucket_choices):  # inner function Hidden from outer code
+            print(bucket_choices['bucket'][0])
+            object_list=s3class.listobjects(bucket_choices)
+            object_choice=[{
+            'type': 'checkbox',
+            'qmark': '😃',
+            'message': 'Select objects',
+            'name': 'object',
+            #'choices': ['test1','test2'],
+            'choices': object_list
+            }
+            ]
+            object_choices = prompt(object_choice, style=custom_style_2)
+            pprint(object_choices)
+            s3class.download_object(bucket_choices,object_choices)
+            confirm_or_exit('S3') 
+        s3objectprompt=prompt(s3objectquestions, style=custom_style_2)
+        s3objectaction=s3objectprompt['objectaction']
+        if s3objectaction=='Go Back':
+            main()
+        elif s3objectaction=='Delete Object from Bucket':
+            
+            delete_object(bucket_choices)
+            
+        elif s3objectaction=='Download object from Bucket':
+
+            download_object(bucket_choices)
+
+            
+
+
+    if action == 'Delete Object from Bucket':
+        print("test")
+        
 def ec2actions(action):
 
     #####################INSTANCES################
@@ -561,8 +640,13 @@ def iamactions(action):
             iamclass.deleteaccesskey(accesskey_choices)
         confirm_or_exit('IAM')
     
-
+    if action == 'List Roles':
+            
+        iamclass.getroles(True)
+            
+        confirm_or_exit('IAM')
 def vpcactions(action):
+    # TODO : resolve issue here
     if action == 'Create VPC':
         cidrblock=input("Insert the CIDR block for the vpc example, 10.0.0.0/16 :  ")
         #path=input("Whre do you want to save the keypair? ")
@@ -599,12 +683,16 @@ def confirm_or_exit(service):
 
 def main():
     os.system('cls')
+    print(f'AWS CLI')
     service=getservice()
     print(service)
     gotoservice(service)
 
 if __name__ == '__main__':
     main()
+
+    
+    
 
     
     
